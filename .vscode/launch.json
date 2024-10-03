@@ -1,0 +1,13 @@
+{
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "name": "C/C++ Runner: Debug Session",
+      "type": "lldb",
+      "request": "launch",
+      "args": [],
+      "cwd": "/Users/ayman/Library/Mobile Documents/com~apple~CloudDocs/Documents/C++/C-Labs",
+      "program": "/Users/ayman/Library/Mobile Documents/com~apple~CloudDocs/Documents/C++/C-Labs/build/Debug/outDebug"
+    }
+  ]
+}
