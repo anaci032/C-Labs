@@ -1,4 +1,7 @@
-/*myFile3.cpp : Ex3 a2 CSI2372A*/
+/*myFile3.cpp : Ex3 a2 CSI2372A
+Student Name: Ayman Naciri
+Student Number: 300143727
+Course Code: CSI2372A*/
 
 #include <iostream>
 using namespace std;

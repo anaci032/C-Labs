@@ -1,4 +1,7 @@
-/*myFile4.cpp : Ex4 a2 CSI2372A*/
+/*myFile4.cpp : Ex4 a2 CSI2372A
+Student Name: Ayman Naciri
+Student Number: 300143727
+Course Code: CSI2372A*/
 
 #include "myFile4.h"
 
@@ -14,7 +17,8 @@ main()
 		{
 		chain[i]=new char[size_ch];		// memory allocation
 		cin.getline(chain[i],size_ch,'\t');	//seizure of the string
-		cin.ignor(INT_MAX,'\n');		// ignore line return
+		//typo corrected
+		cin.ignore(INT_MAX,'\n');		// ignore line return
 		}
 
 	display(chain,nb_ch);					
@@ -25,7 +29,8 @@ main()
 	
 		switch(choice)
 			{
-			case '1':	diplay(chain,nb_ch);
+				//typo corrected
+			case '1':	display(chain,nb_ch);
 				break;
 			case '2':	replace(chain,nb_ch,size_ch);	
 				break;
@@ -66,7 +71,9 @@ char menu(void)
 /********************************************************************************/
 void display(char* tab[], int const& nbre)
 {
-	//YOUR CODE 
+	for (int i = 0; i < nbre; ++i) {
+        cout << "The string " << i << " is: " << tab[i] << endl;
+    }
 }
 
 
@@ -88,7 +95,15 @@ void replace(char* tab[], int const& nbre, int const& size)
 	cin >> numero;
 
 
-	//YOUR CODE 
+	if (numero >= 0 && numero < nbre) {
+		// Clear newline
+        cin.ignore(INT_MAX, '\n'); 
+        cout << "Enter the new string: ";
+		// Replace the string
+        cin.getline(tab[numero], size, '\n'); 
+    } else {
+        cout << "Invalid string number!" << endl;
+    }
 }
 
 /********************************************************************************/
@@ -96,6 +111,18 @@ void replace(char* tab[], int const& nbre, int const& size)
 /********************************************************************************/
 void sort(char* tab[], int const& nbre)
 {
-	// YOUR CODE 
+	for (int i = 1; i < nbre; ++i) {
+		//tmp key for exchage
+        char* key = new char[size_ch]; 
+        strcpy(key, tab[i]);
+
+        int j = i - 1;
+        while (j >= 0 && strcmp(tab[j], key) > 0) {
+            tab[j + 1] = tab[j];
+            j--;
+        }
+		//exchage
+        tab[j + 1] = key;
+    }
 }
 

@@ -1,4 +1,7 @@
-/*myFile2.cpp : Ex2 a2 CSI2372A*/
+/*myFile2.cpp : Ex2 a2 CSI2372A
+Student Name: Ayman Naciri
+Student Number: 300143727
+Course Code: CSI2372A*/
 
 #include "myFile2.h"
 

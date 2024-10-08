@@ -1,4 +1,7 @@
-/*myFile4.h : Ex4 a2 CSI2372A*/
+/*myFile4.h : Ex4 a2 CSI2372A
+Student Name: Ayman Naciri
+Student Number: 300143727
+Course Code: CSI2372A*/
 
 #include <iostream>
 #include <process.h>		//for exit() 
