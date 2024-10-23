@@ -8,8 +8,8 @@
       "args": [],
       "stopAtEntry": false,
       "externalConsole": true,
-      "cwd": "c:/mycpplabs/C-Labs-1/Lab2",
-      "program": "c:/mycpplabs/C-Labs-1/Lab2/build/Debug/outDebug",
+      "cwd": "c:/mycpplabs/C-Labs-1/Lab3",
+      "program": "c:/mycpplabs/C-Labs-1/Lab3/build/Debug/outDebug",
       "MIMode": "gdb",
       "miDebuggerPath": "gdb",
       "setupCommands": [

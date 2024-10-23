@@ -1,4 +1,7 @@
-/*Ex2 - a3 CSI2372A*/
+/*Ex2 - a3 CSI2372A
+Student Name: Ayman Naciri
+Student Number: 300143727
+Course Code: CSI2372A*/
 
 #include <iostream>
 #include <process.h>
