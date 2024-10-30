@@ -6,8 +6,8 @@
       "type": "lldb",
       "request": "launch",
       "args": [],
-      "cwd": "/Users/ayman/Library/Mobile Documents/com~apple~CloudDocs/Documents/C++/C-Labs/Lab2",
-      "program": "/Users/ayman/Library/Mobile Documents/com~apple~CloudDocs/Documents/C++/C-Labs/Lab2/build/Debug/outDebug"
+      "cwd": "/Users/ayman/Library/Mobile Documents/com~apple~CloudDocs/Documents/C++/C-Labs/Lab4",
+      "program": "/Users/ayman/Library/Mobile Documents/com~apple~CloudDocs/Documents/C++/C-Labs/Lab4/build/Debug/outDebug"
     }
   ]
 }
