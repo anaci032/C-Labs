@@ -1,0 +1,21 @@
+# Ignore build artifacts and executables
+main
+*.o
+*.out
+*.exe
+
+# Ignore temporary files
+*.tmp
+*.log
+*.bak
+*.swp
+
+# Ignore macOS specific files
+.DS_Store
+
+# Ignore Visual Studio Code settings
+.vscode/
+
+# Ignore compiled Python files (if any scripts are added later)
+__pycache__/
+*.pyc
