@@ -6,7 +6,7 @@
 #include <string>
 #include "Player.h"
 #include "Deck.h"
-#include "Hand.h"
+#include "DiscardPile.h"
 #include "TradeArea.h"
 #include "CardFactory.h"
 
@@ -14,7 +14,7 @@ class Table {
     std::unique_ptr<Player> player1;
     std::unique_ptr<Player> player2;
     Deck deck;
-    Hand discardPile;
+    DiscardPile discardPile;
     TradeArea tradeArea;
 
 public:
@@ -35,7 +35,7 @@ public:
     Player* getPlayer1() const;
     Player* getPlayer2() const;
     Deck& getDeck();
-    Hand& getDiscardPile();
+    DiscardPile& getDiscardPile();
     TradeArea& getTradeArea();
 
     // Friend operator<< for printing the table

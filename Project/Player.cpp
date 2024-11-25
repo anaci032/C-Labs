@@ -1,6 +1,12 @@
 #include "Player.h"
 #include "exceptions.h"
 #include <iostream>
+#include "Chain.h"
+#include "Card.h"
+
+void displayCard(const Card& card) {
+    card.print(std::cout); // Use the card's `print` method for its emoji/shorthand
+}
 
 Player::Player(const std::string& playerName, int maxChains)
     : name(playerName), maxChains(maxChains) {
@@ -58,19 +64,73 @@ ChainBase* Player::getChain(int index) const {
     return nullptr;
 }
 
+void Player::addToChain(Card* card) {
+    for (auto& chain : chains) {
+        if (chain && chain->canAddCard(card)) {
+            *chain += card; // Add the card to the matching chain
+            return;
+        }
+    }
+
+    if (getNumChains() < maxChains) {
+        // Create a new chain with the card
+        auto newChain = std::make_unique<Chain<Card>>();
+        *newChain += card; // Add the card to the new chain
+        for (auto& chain : chains) {
+            if (!chain) { // Find an empty slot for the new chain
+                chain = std::move(newChain);
+                return;
+            }
+        }
+    } else {
+        throw std::runtime_error("No available chains. Consider selling a chain.");
+    }
+}
+
+int Player::sellChain(int chainIndex) {
+    if (chainIndex >= 0 && chainIndex < chains.size() && chains[chainIndex]) {
+        int coinsEarned = chains[chainIndex]->sell(); // Calculate coins earned
+        coins += coinsEarned; // Add coins to player's total
+        chains[chainIndex] = nullptr; // Remove the chain
+        return coinsEarned;
+    }
+    throw std::runtime_error("Invalid chain index.");
+}
+
+void Player::addCardToHand(Card* card) {
+    hand.addCard(card); // Add the card to the player's hand
+}
+
 void Player::printHand(std::ostream& out, bool showAll) const {
     if (showAll) {
         out << "Hand: ";
-        hand.print(out);
+        if (!hand.isEmpty()) {
+            hand.print(out); // Print all cards in the hand
+        } else {
+            out << "No cards in hand";
+        }
         out << "\n";
     } else {
         out << "Top card of hand: ";
         Card* topCard = hand.top();
         if (topCard) {
-            out << *topCard;
+            topCard->print(out); // Print the top card
         } else {
             out << "No cards";
         }
         out << "\n";
+    }
+}
+
+void Player::printChains(std::ostream& out) const {
+    out << "Chains:\n";
+    for (size_t i = 0; i < chains.size(); ++i) {
+        if (chains[i]) {
+            out << "Chain " << i + 1 << ": ";
+            chains[i]->print(out); // Use ChainBase's print method
+            out << "\n";
+        } else {
+            out << "Chain " << i + 1 << ": Empty\n";
+        }
     }
 }

@@ -10,33 +10,44 @@
 #include "Chain.h"
 #include "ChainBase.h"
 
+// Utility function for displaying a card (can be used outside Player)
+void displayCard(const Card& card);
+
 class Player {
     std::string name;
     int coins = 0;
     Hand hand;
-    std::vector<std::unique_ptr<ChainBase>> chains; // Use ChainBase for polymorphic behavior
+    std::vector<std::unique_ptr<ChainBase>> chains; // Polymorphic behavior for chains
     int maxChains;
 
 public:
+    // Constructor
     Player(const std::string& playerName, int maxChains = 2);
+
+    // Getters
     std::string getName() const;
     int getNumCoins() const;
-    void addCoins(int num);
-    void buyThirdChain();
     int getMaxNumChains() const;
     int getNumChains() const;
-    void addChain(std::unique_ptr<ChainBase> chain);
     ChainBase* getChain(int index) const;
-    void printHand(std::ostream& out, bool showAll) const;
 
+    // Game actions
+    void addCoins(int num);
+    void buyThirdChain();
+    void addToChain(Card* card); // Adds a card to the appropriate chain
+    int sellChain(int chainIndex); // Sells a chain for coins
+    void addChain(std::unique_ptr<ChainBase> chain);
+    void addCardToHand(Card* card); // Add a card to the hand
+
+    // Display methods
+    void printHand(std::ostream& out, bool showAll) const;
+    void printChains(std::ostream& out) const; // Display chains
+
+    // Overload for printing player info
     friend std::ostream& operator<<(std::ostream& out, const Player& player) {
         out << player.name << " has " << player.coins << " coins\n";
-        for (size_t i = 0; i < player.chains.size(); ++i) {
-            if (player.chains[i]) {
-                out << "Chain " << i + 1 << ": " << *player.chains[i] << "\n";
-            }
-        }
-        player.printHand(out, true);
+        player.printChains(out); // Display chains
+        player.printHand(out, true); // Display all cards in hand
         return out;
     }
 };
